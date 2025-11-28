@@ -10,7 +10,9 @@ spec:
   containers:
   - name: app
     image: busybox
+    # command sobreescriu al ENTRYPOINT
     command: ["/bin/sh"]
+    # args sobreescriu al CMD, si només es defineix args, K8s utilitza el ENTRYPOINT de la imatge
     args: ["-c", "while true; do date >> /var/log/index.html; sleep 10;done"]
     volumeMounts:
     - name: logs
